@@ -1,0 +1,113 @@
+<html>
+	<head>
+		<title>OrderMyFood </title>
+		
+		<style>
+			button {
+				background-color:lightBlue;
+				color:white;
+				border:2px solid black;
+				border_radius:5px;
+				padding:10px 10px;
+				cursor:pointer;
+			}
+			
+			h1{
+				color:blue;
+
+			}
+			fieldset{
+				background-color:lightgray;
+			}
+			
+			button:hover{
+				background-color:red;
+			}
+			</style>
+
+			
+			<script>
+				function calculateBill(){
+					var name=document.getElementById("name").value;
+					var qty=parseInt(document.getElementById("qty").value);
+					var food = document.getElementById("food").value;
+					var veg = document.getElementById("veg").checked;
+					var nonVeg = document.getElementById("nonVeg").checked;
+					
+					var price=0;
+					var foodType;
+					
+					switch(food){
+						case "Burger" :	
+							price=qty*1000;
+							break;
+							
+						case "Pasta" :
+							price=qty*1500;
+							break;
+						
+						case "Pizza" :
+							price=qty*2000;
+							break;
+
+					}
+					if(nonVeg){
+						foodType="Non-Vegetarian";
+						price=price+500*qty;
+					}
+					
+					else{
+						foodType="Vegetarian";
+
+					}
+					alert("Dear " + name + ", Total payment is : Rs." + price + " ( " + qty + " " + foodType + " "+ food +") ");
+
+
+				}	
+			</script>
+
+	</head>
+	
+	<body>
+		<form style="width:50%"> 
+			<fieldset>
+				<h1>Order My Foods</h1>
+				<h4>Online Food Order Form</h4>
+				
+				<label for="name">Name :</label>
+				<input type="text" name="name" id="name" required><br><br>
+				
+				<label for="email">Email :</label>
+				<input type="email" name="email" id="email" required><br><br>
+				
+				<label for="TP">Phone Number :</label>
+				<input type="text" name="phoNo" id="phoNo" required><br><br>
+				
+				<label for="selectFood">Select Food :</label>
+				<select name="food" id="food">
+					<option value="Burger">Burger</option>
+					<option value="Pasta">Pasta</option>
+					<option value="Pizza">Pizza</option>
+				</select>
+				<br><br>
+				
+				<label for="foodType">Food Type:</label>
+				<input type="radio" name="type" id="veg" value="Vegetarian" required > Vegetarian
+				<input type="radio" name="type" id="nonVeg" value="Non-Vegetarian" required> Non-Vegetarian
+				<br><br>
+				
+				<label for="quantity">Quantity :</label>
+				<input type="numbers" name="qty" id="qty" required><br><br>
+				
+				<label for="additionaComments">Additional Comments:</label><br>
+				<textarea type="text" name="Comments" id="Comments"></textarea><br><br>
+				
+				<button type="Submit" onclick="calculateBill()">Submit Order</button>
+
+
+			</fieldset>
+
+		</form>
+		
+	</body>
+</html>
